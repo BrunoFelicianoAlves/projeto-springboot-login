@@ -13,22 +13,28 @@ import projeto_spring_boot.projeto_spring.repository.UsuarioRepository;
 @Configuration
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/cadastro", "/css/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .formLogin(login -> login
-                .loginPage("/login")
-                .defaultSuccessUrl("/home", true)
-                .permitAll()
-            )
-            .logout(logout -> logout.permitAll());
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	    http
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers("/login", "/cadastro", "/css/**", "/h2-console/**").permitAll()
+	            .anyRequest().authenticated()
+	        )
+	        .formLogin(login -> login
+	            .loginPage("/login")
+	            .defaultSuccessUrl("/home", true)
+	            .permitAll()
+	        )
+	        .logout(logout -> logout.permitAll())
+	        .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+	        .csrf(csrf -> csrf
+	            .ignoringRequestMatchers("/h2-console/**")
+	        );
 
-        return http.build();
-    }
+	    return http.build();
+	}
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
