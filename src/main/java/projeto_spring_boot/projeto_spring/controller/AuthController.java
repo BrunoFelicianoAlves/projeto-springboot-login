@@ -20,12 +20,12 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "/usuario-login";
     }
 
     @GetMapping("/cadastro")
     public String cadastroForm() {
-        return "cadastro";
+        return "/usuario-cadastro";
     }
 
     @PostMapping("/cadastro")
@@ -36,13 +36,18 @@ public class AuthController {
         return "redirect:/login";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/private/home")
     public String home() {
-        return "home";
+        return "private/home";
     }
     
-    @GetMapping("/logout")
-    public String logout() {
-        return "login";
+//    @GetMapping("/logout")
+//    public String logout() {
+//        return "/login";
+//    }
+    
+    @GetMapping("/private/perfil")
+    public String perfil() {
+    	return "private/perfil";
     }
 }

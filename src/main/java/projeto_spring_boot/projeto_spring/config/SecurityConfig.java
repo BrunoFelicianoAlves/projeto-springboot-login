@@ -18,23 +18,33 @@ public class SecurityConfig {
 	    http
 	        .authorizeHttpRequests(auth -> auth
 	            .requestMatchers("/login", "/cadastro", "/css/**", "/h2-console/**").permitAll()
+	            .requestMatchers("/private/**").authenticated()
 	            .anyRequest().authenticated()
 	        )
 	        .formLogin(login -> login
 	            .loginPage("/login")
-	            .defaultSuccessUrl("/home", true)
+	            .defaultSuccessUrl("/private/home", true)
 	            .permitAll()
 	        )
-	        .logout(logout -> logout.permitAll())
-	        .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+		    //  .logout(logout -> logout.permitAll())
+		    //  .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+	        .logout(logout -> logout
+	            .logoutUrl("/logout")
+	            .logoutSuccessUrl("/login?logout")
+	            .invalidateHttpSession(true) // invalida a sessão
+	            .clearAuthentication(true)   // limpa autenticação
+	            .permitAll()
+	        )
+	        .headers(headers -> headers
+	            .frameOptions(frame -> frame.sameOrigin())
+	            .cacheControl(cache -> cache.disable()) // desabilita cache do navegador
+	        )
 	        .csrf(csrf -> csrf
 	            .ignoringRequestMatchers("/h2-console/**")
 	        );
 
 	    return http.build();
 	}
-
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -53,5 +63,4 @@ public class SecurityConfig {
             )
             .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
-
 }

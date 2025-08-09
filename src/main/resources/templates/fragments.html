@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Fragments</title>
+</head>
+<body>
+
+  <div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/private/home}">Meu Site</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<!-- <ul class="navbar-nav mx-auto"> -->
+          <ul class="navbar-nav ms-auto">
+			  <li class="nav-item"><a class="nav-link" th:href="@{/private/home}">Home</a></li>
+			  <li class="nav-item"><a class="nav-link" th:href="@{/outros-links}">Outros links</a></li>
+			
+			  <li class="nav-item dropdown">
+			    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Serviços</a>
+			    <ul class="dropdown-menu">
+			      <li><a class="dropdown-item" th:href="@{/servicos/web}">Desenvolvimento Web</a></li>
+			      <li><a class="dropdown-item" th:href="@{/servicos/mobile}">Aplicativos Mobile</a></li>
+			      <li><hr class="dropdown-divider"></li>
+			      <li><a class="dropdown-item" th:href="@{/servicos/consultoria}">Consultoria</a></li>
+			    </ul>
+			  </li>
+
+			  <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+				    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				        <span class="text-light">
+				            Olá, <strong sec:authentication="name"></strong>
+				        </span>
+				    </a>
+				    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+				        <li><a class="dropdown-item" th:href="@{/private/perfil}">Perfil</a></li>
+				        <li><a class="dropdown-item" th:href="@{/servicos/alterar-senha}">Alterar senha</a></li>
+				        <li><hr class="dropdown-divider"></li>
+				        <li>
+					      <form th:action="@{/logout}" method="post" style="display: inline;">
+					        <button type="submit" class="dropdown-item text-danger" style="border: none; background: none; padding: 0; margin: 0; text-align: center;">
+					          Sair
+					        </button>
+					      </form>
+					    </li>
+				    </ul>
+				</li>
+
+			</ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</body>
+</html>
