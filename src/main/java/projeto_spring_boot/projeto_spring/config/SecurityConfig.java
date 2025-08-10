@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,6 +25,7 @@ public class SecurityConfig {
 	        .formLogin(login -> login
 	            .loginPage("/login")
 	            .defaultSuccessUrl("/private/home", true)
+	            .failureUrl("/login?error=true")
 	            .permitAll()
 	        )
 		    //  .logout(logout -> logout.permitAll())
@@ -61,6 +63,7 @@ public class SecurityConfig {
                     .roles(user.getRole())
                     .build()
             )
-            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+            //.orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        	.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
     }
 }

@@ -8,7 +8,7 @@
   <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/private/home}">Meu Site</a>
+        <a class="navbar-brand" th:href="@{/private/home}">Filmes</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,13 +17,13 @@
 		<!-- <ul class="navbar-nav mx-auto"> -->
           <ul class="navbar-nav ms-auto">
 			  <li class="nav-item"><a class="nav-link" th:href="@{/private/home}">Home</a></li>
-			  <li class="nav-item"><a class="nav-link" th:href="@{/outros-links}">Outros links</a></li>
+		<!--<li class="nav-item"><a class="nav-link" th:href="@{/outros-links}">Outros links</a></li> -->
 			
 			  <li class="nav-item dropdown">
 			    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Serviços</a>
 			    <ul class="dropdown-menu">
-			      <li><a class="dropdown-item" th:href="@{/servicos/web}">Desenvolvimento Web</a></li>
-			      <li><a class="dropdown-item" th:href="@{/servicos/mobile}">Aplicativos Mobile</a></li>
+			      <li><a class="dropdown-item" th:href="@{/filmes}">Visualizar filmes</a></li>
+			      <li><a class="dropdown-item" th:href="@{/filmes/novo}">Adicionar filmes</a></li>
 			      <li><hr class="dropdown-divider"></li>
 			      <li><a class="dropdown-item" th:href="@{/servicos/consultoria}">Consultoria</a></li>
 			    </ul>

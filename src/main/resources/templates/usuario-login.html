@@ -6,22 +6,38 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+	
+    <div class="card p-4 shadow-sm position-relative" style="max-width: 400px; width: 100%;">
 
-    <div class="card p-4 shadow-sm" style="max-width: 400px; width: 100%;">
-        <h2 class="text-center mb-4">Login</h2>
-        <form th:action="@{/login}" method="post">
-            <div class="mb-3">
-                <label class="form-label">Usuário:</label>
-                <input type="text" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Senha:</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-success w-100">Entrar</button>
-        </form>
-        <a th:href="@{/cadastro}" class="d-block text-center mt-3 text-decoration-none">Cadastrar</a>
+    <!-- Mensagem de logout -->
+    <div th:if="${param.logout}" 
+         class="alert alert-success text-center position-absolute w-100"
+         style="top: -60px; left: 0; z-index: 1000;">
+        Você saiu com sucesso!
     </div>
+
+    <!-- Mensagem de erro -->
+    <div th:if="${param.error}" 
+         class="alert alert-danger text-center position-absolute w-100"
+         style="top: -60px; left: 0; z-index: 1000;">
+        Usuário ou senha inválidos!
+    </div>
+
+    <h2 class="text-center mb-4">Login</h2>
+    <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Usuário:</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Senha:</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Entrar</button>
+    </form>
+
+    <a th:href="@{/cadastro}" class="d-block text-center mt-3 text-decoration-none">Cadastrar</a>
+</div>
 
 </body>
 </html>
