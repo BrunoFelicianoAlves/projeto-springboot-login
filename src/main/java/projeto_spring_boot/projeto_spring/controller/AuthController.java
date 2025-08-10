@@ -50,4 +50,9 @@ public class AuthController {
     public String perfil() {
     	return "private/perfil";
     }
+    
+    @GetMapping("/private/alterar-senha")
+    public String alteraSenha() {
+        return "private/perfil-altera-senha";
+    }
 }

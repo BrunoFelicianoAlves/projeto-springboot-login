@@ -2,10 +2,10 @@ package projeto_spring_boot.projeto_spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/private/servicos")
+//@RequestMapping("/private/servicos")
 public class ServicosController {
 
     @GetMapping("/videos")
@@ -22,4 +22,7 @@ public class ServicosController {
     public String consultoria() {
         return "private/servicos/consultoria";
     }
+    
+
+
 }

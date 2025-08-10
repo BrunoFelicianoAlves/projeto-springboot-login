@@ -24,8 +24,8 @@
 			    <ul class="dropdown-menu">
 			      <li><a class="dropdown-item" th:href="@{/filmes}">Visualizar filmes</a></li>
 			      <li><a class="dropdown-item" th:href="@{/filmes/novo}">Adicionar filmes</a></li>
-			      <li><hr class="dropdown-divider"></li>
-			      <li><a class="dropdown-item" th:href="@{/servicos/consultoria}">Consultoria</a></li>
+		<!--<li><hr class="dropdown-divider"></li> -->
+		<!--<li><a class="dropdown-item" th:href="@{/servicos/consultoria}">Consultoria</a></li> -->
 			    </ul>
 			  </li>
 
@@ -37,7 +37,7 @@
 				    </a>
 				    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
 				        <li><a class="dropdown-item" th:href="@{/private/perfil}">Perfil</a></li>
-				        <li><a class="dropdown-item" th:href="@{/servicos/alterar-senha}">Alterar senha</a></li>
+				        <li><a class="dropdown-item" th:href="@{/private/alterar-senha}">Alterar senha</a></li>
 				        <li><hr class="dropdown-divider"></li>
 				        <li>
 					      <form th:action="@{/logout}" method="post" style="display: inline;">
