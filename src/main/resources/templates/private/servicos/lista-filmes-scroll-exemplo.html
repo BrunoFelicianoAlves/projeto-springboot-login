@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exemplo Scroll Horizontal de Filmes</title>
+  <style>
+    :root {
+      --gap: 16px;
+      --min-card-width: 200px; /* largura que a imagem terá quando a tela for pequena */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f7;
+      color: #111;
+    }
+
+    .wrap {
+      max-width: 1200px; /* opcional: centraliza e limita largura "desktop" */
+      margin: 24px auto;
+      padding: 0 12px;
+    }
+
+    h1 { font-size: 18px; margin: 0 0 12px 0; }
+
+    /* Container com rolagem horizontal */
+    .movies-container {
+      display: flex;
+      flex-wrap: nowrap;            /* todos os cards em uma única linha */
+      gap: var(--gap);
+      overflow-x: auto;             /* ativa scroll horizontal quando necessário */
+      overflow-y: hidden;           /* esconde scroll vertical */
+      padding: 12px 6px;
+      -webkit-overflow-scrolling: touch; /* rolagem suave em iOS */
+      scroll-behavior: smooth;      /* rolagem suave ao usar controles JS */
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Cada card terá como base 1/6 da largura do container, mas não ficará MENOR que --min-card-width */
+    .movie-card {
+      flex: 0 0 calc((100% - (var(--gap) * 5)) / 6);
+      max-width: calc((100% - (var(--gap) * 5)) / 6);
+      min-width: var(--min-card-width); /* garante que em telas pequenas o card NÃO encolha */
+      height: 300px;                    /* altura fixa — ajuste conforme precisar */
+      background: #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      display: block;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* mantém o aspecto e preenche o card */
+      display: block;
+    }
+
+    /* Pequena melhoria visual: barra de rolagem fina para navegadores WebKit */
+    .movies-container::-webkit-scrollbar {
+      height: 10px;
+    }
+    .movies-container::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 999px;
+    }
+    .movies-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Opcional: centralizar conteúdo em telas bem grandes */
+    @media (min-width: 1400px) {
+      .wrap { max-width: 1400px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Novidades de filmes</h1>
+
+    <div class="movies-container" aria-label="Lista de filmes, deslize para ver mais">
+      <!-- Exemplos de imagens — substitua src pelos seus URLs -->
+      <a class="movie-card" href="#" title="Filme 1">
+        <img src="https://picsum.photos/seed/1/400/600" alt="Filme 1">
+      </a>
+      <a class="movie-card" href="#" title="Filme 2">
+        <img src="https://picsum.photos/seed/2/400/600" alt="Filme 2">
+      </a>
+      <a class="movie-card" href="#" title="Filme 3">
+        <img src="https://picsum.photos/seed/3/400/600" alt="Filme 3">
+      </a>
+      <a class="movie-card" href="#" title="Filme 4">
+        <img src="https://picsum.photos/seed/4/400/600" alt="Filme 4">
+      </a>
+      <a class="movie-card" href="#" title="Filme 5">
+        <img src="https://picsum.photos/seed/5/400/600" alt="Filme 5">
+      </a>
+      <a class="movie-card" href="#" title="Filme 6">
+        <img src="https://picsum.photos/seed/6/400/600" alt="Filme 6">
+      </a>
+      <a class="movie-card" href="#" title="Filme 7">
+        <img src="https://picsum.photos/seed/7/400/600" alt="Filme 7">
+      </a>
+      <a class="movie-card" href="#" title="Filme 8">
+        <img src="https://picsum.photos/seed/8/400/600" alt="Filme 8">
+      </a>
+    </div>
+  </div>
+</body>
+</html>

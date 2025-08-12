@@ -1,0 +1,33 @@
+:root {
+	--gap: 16px;
+}
+
+/* GRID de filmes */
+.movies-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	/* Responsivo */
+	gap: var(--gap);
+}
+
+/* No desktop, força máximo de 6 colunas */
+@media ( min-width : 1200px) {
+	.movies-container {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+.movie-card {
+	aspect-ratio: 2/3; /* Mantém proporção vertical */
+	border-radius: 6px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.movie-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 6px;
+	display: block;
+}

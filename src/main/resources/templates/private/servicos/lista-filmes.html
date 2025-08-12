@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="h-100">
 <head>
-
     <title>Novo Filme</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles-lista-filmes.css}">
 
 </head>
 
 <body class="bg-light">
 
-<div th:replace="fragments :: navbar"></div>	
+<div th:replace="fragments :: navbar"></div>    
 
-	<div class="container mt-4">
-	    <h4 class="text-black mb-3">Novidades de filmes</h4>
-	    <div class="d-flex flex-row flex-nowrap overflow-auto gap-3">
-	        <!-- Lista de filmes dinâmica -->
-	        <div th:each="filme : ${filmes}" 
-	             class="card movie-card" 
-	             data-bs-toggle="modal" 
-	             data-bs-target="#videoModal"
-	             th:attr="data-video-url=${filme.videoUrl}">
-	            <img th:src="${filme.imagemUrl}" width="200px" height="300" class="card-img-top" th:alt="${filme.titulo}">
-				<!--<img th:src="${filme.imagemUrl}" width="100%" height="300" class="card-img-top" th:alt="${filme.titulo}"> -->
-	        </div>
-	    </div>
-	</div>
+<div class="container mt-4">
+    <h4 class="text-black mb-3">Novidades de filmes</h4>
 
-	<!-- Modal único -->
-	<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
-	    <div class="modal-dialog modal-dialog-centered modal-xl">
-	        <div class="modal-content bg-dark">
-	            <div class="modal-body p-0">
-	                <iframe id="videoFrame" width="100%" height="600" src="" frameborder="0" allowfullscreen></iframe>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+    <div class="movies-container">
+        <!-- Lista de filmes dinâmica -->
+        <div th:each="filme : ${filmes}" 
+             class="card movie-card" 
+             data-bs-toggle="modal" 
+             data-bs-target="#videoModal"
+             th:attr="data-video-url=${filme.videoUrl}">
+            <img th:src="${filme.imagemUrl}" th:alt="${filme.titulo}">
+        </div>
+    </div>
+</div>
 
-	<script>
-	    // Ao clicar em qualquer filme, abre o vídeo no modal
-	    document.addEventListener("DOMContentLoaded", () => {
-	        document.querySelectorAll(".movie-card").forEach(card => {
-	            card.addEventListener("click", () => {
-	                let videoUrl = card.getAttribute("data-video-url");
-	                document.getElementById("videoFrame").src = videoUrl;
-	            });
-	        });
-	
-	        // Limpa o vídeo quando o modal é fechado
-	        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
-	            document.getElementById("videoFrame").src = "";
-	        });
-	    });
-	</script>
+<!-- Modal único -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark">
+            <div class="modal-body p-0">
+                <iframe id="videoFrame" width="100%" height="600" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".movie-card").forEach(card => {
+            card.addEventListener("click", () => {
+                let videoUrl = card.getAttribute("data-video-url");
+                document.getElementById("videoFrame").src = videoUrl;
+            });
+        });
+
+        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+            document.getElementById("videoFrame").src = "";
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
