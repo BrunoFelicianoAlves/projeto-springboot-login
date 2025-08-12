@@ -61,9 +61,13 @@ public class AuthController {
         // Só para exemplo: usando o username logado
         model.addAttribute("username", principal.getName());
 
-        // Adiciona o parâmetro (true ou null) para o Thymeleaf
+        return "private/perfil";
+    }
+    
+    @GetMapping("/private/perfil-altera-senha")
+    public String perfilAlteraSenha(@RequestParam(value = "senhaAlterada", required = false) String senhaAlterada,
+                                   Model model) {
         model.addAttribute("senhaAlterada", senhaAlterada != null);
-
         return "private/perfil-altera-senha";
     }
     

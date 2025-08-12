@@ -43,14 +43,14 @@ public class UsuarioAlteraSenhaController {
 	    // 2. Verifica se a senha atual está correta
 	    if (!passwordEncoder.matches(senhaAtual, usuario.getPassword())) {
 	    	redirectAttributes.addFlashAttribute("erro", "Senha atual incorreta");
-	    	return "redirect:/private/perfil?senhaAlterada=false";
+	    	return "redirect:/private/perfil-altera-senha?senhaAlterada=false";
 //	        throw new RuntimeException("Senha atual incorreta");
 	    }
 
 	    // 3. Verifica se as senhas novas coincidem
 	    if (!novaSenha.equals(confirmaSenha)) {
 	    	redirectAttributes.addFlashAttribute("erro", "Nova senha e confirmação não coincidem");
-	    	return "redirect:/private/perfil?senhaAlterada=false";
+	    	return "redirect:/private/perfil-altera-senha?senhaAlterada=false";
 //	        throw new RuntimeException("Nova senha e confirmação não coincidem");
 	    }
 
@@ -61,7 +61,7 @@ public class UsuarioAlteraSenhaController {
 	    // 5. Redireciona com mensagem de sucesso
 	    redirectAttributes.addFlashAttribute("sucesso", "Senha alterada com sucesso!");
 	    //return "redirect:/private/perfil";
-	    return "redirect:/private/perfil?senhaAlterada=true";
+	    return "redirect:/private/perfil-altera-senha?senhaAlterada=true";
 	}
 
 }
