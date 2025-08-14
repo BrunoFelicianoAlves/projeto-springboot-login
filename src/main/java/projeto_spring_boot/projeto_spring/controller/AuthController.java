@@ -32,10 +32,22 @@ public class AuthController {
     }
 
     @PostMapping("/cadastro")
-    public String cadastrar(@ModelAttribute Usuario usuario) {
+    public String cadastrar(@ModelAttribute Usuario usuario, Model model) {
+        
+        // Verifica se já existe usuário com este username
+        boolean existe = usuarioRepository.findByUsername(usuario.getUsername()).isPresent();
+        if (existe) {
+            model.addAttribute("erro", "Nome de usuário em uso. Utilize outro.");
+            return "/usuario-cadastro"; // volta para o formulário
+        }
+        
+        // Criptografa senha e define a role padrão
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setRole("USER");
+        
+        // Salva no banco
         usuarioRepository.save(usuario);
+        
         return "redirect:/login";
     }
 

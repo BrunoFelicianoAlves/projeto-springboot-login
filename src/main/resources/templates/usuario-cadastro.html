@@ -11,6 +11,11 @@
 <body class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
 
 	<div class="card p-4 shadow-sm"  style="max-width: 400px; width: 100%;">
+		
+		<div th:if="${erro}" class="alert alert-danger" style="text-align: center" role="alert">
+		    <span th:text="${erro}"></span>
+		</div>
+		
 		<h2 class="text-center mb-4">Cadastrar Usuário</h2>
 		<form th:action="@{/cadastro}" method="post">
 			<div class="mb-3">
