@@ -1,21 +1,17 @@
-Este projeto é um sistema simples de login, cadastro de usuários e gerenciamento de filmes utilizando Spring Boot, Spring Security, Thymeleaf e JPA.
-Ele implementa autenticação com criptografia de senha e proteção de rotas, além de permitir o cadastro e listagem de filmes.
+Este projeto é um sistema simples de login, cadastro de usuários e gerenciamento de filmes
+Utiliza Spring Boot, Spring Security, Thymeleaf e JPA.
+Implementa autenticação com criptografia de senha e proteção de rotas.
 
 📌 Funcionalidades
 
-Cadastro de usuário com senha criptografada usando BCrypt.
-
 Login seguro com Spring Security.
-
+Interface com Thymeleaf e Bootstrap.
 Proteção de rotas para páginas privadas.
-
 Alteração de senha para usuários logados.
-
 Cadastrar, editar, excluir e listagem de filmes.
 
-Interface com Thymeleaf e Bootstrap.
-
 Banco de dados configurado para H2 (padrão) ou PostgreSQL.
+Cadastro de usuário com senha criptografada usando BCrypt.
 
 🛠 Tecnologias Utilizadas
 
