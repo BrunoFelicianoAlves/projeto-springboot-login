@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,4 +38,38 @@ public class FilmeController {
         filmeRepository.save(filme);
         return "redirect:/filmes";
     }
+    
+    @GetMapping("/gerenciar")
+    public String gerenciarFilmes(Model model) {
+        model.addAttribute("filmes", filmeRepository.findAll());
+        return "/private/servicos/gerenciar-filmes";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editarFilmeForm(@PathVariable Long id, Model model) {
+        Filme filme = filmeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Filme não encontrado"));
+        model.addAttribute("filme", filme);
+        return "private/servicos/form-filmes"; // o mesmo formulário de cadastro
+    }
+
+    @PostMapping("/editar/{id}")
+    public String salvarEdicao(@PathVariable Long id, @ModelAttribute Filme filmeAtualizado) {
+        Filme filme = filmeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Filme não encontrado"));
+
+        filme.setTitulo(filmeAtualizado.getTitulo());
+        filme.setImagemUrl(filmeAtualizado.getImagemUrl());
+        filme.setVideoUrl(filmeAtualizado.getVideoUrl());
+
+        filmeRepository.save(filme);
+        return "redirect:/filmes/gerenciar";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluirFilme(@PathVariable Long id) {
+        filmeRepository.deleteById(id);
+        return "redirect:/filmes/gerenciar";
+    }
+
 }

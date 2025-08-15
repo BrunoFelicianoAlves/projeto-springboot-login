@@ -24,8 +24,11 @@
 			    <ul class="dropdown-menu">
 			      <li><a class="dropdown-item" th:href="@{/filmes}">Visualizar filmes</a></li>
 			      <li><a class="dropdown-item" th:href="@{/filmes/novo}">Adicionar filmes</a></li>
-		<!--<li><hr class="dropdown-divider"></li> -->
-		<!--<li><a class="dropdown-item" th:href="@{/servicos/consultoria}">Consultoria</a></li> -->
+			      <li><a class="dropdown-item" th:href="@{/filmes/gerenciar}">Gerenciar Filmes</a></li>
+				  <!--<li sec:authorize="hasRole('ADMIN')"><a class="nav-link" th:href="@{/filmes/gerenciar}">Gerenciar Filmes</a></li> -->
+		
+				  <!--<li><hr class="dropdown-divider"></li> -->
+				  <!--<li><a class="dropdown-item" th:href="@{/servicos/consultoria}">Consultoria</a></li> -->
 			    </ul>
 			  </li>
 
