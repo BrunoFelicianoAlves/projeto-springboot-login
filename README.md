@@ -57,25 +57,4 @@ cd projeto-spring
 # Porta padrão
 server.port=8080
 
-# Configuração H2 (banco em memória)
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-
-# Console do H2
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
-
-# Configuração JPA
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-
-_________________________________________________________________
-spring.datasource.url=jdbc:postgresql://localhost:5432/nome_banco
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
+[Ex: localhost](http://localhost:8080/login)
