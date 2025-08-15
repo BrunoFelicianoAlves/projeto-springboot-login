@@ -48,7 +48,6 @@ Maven instalado
 Clonar o repositório
 
 git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
-cd projeto-spring
 
 # Porta padrão
 server.port=8080
