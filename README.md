@@ -57,4 +57,4 @@ cd projeto-spring
 # Porta padrão
 server.port=8080
 
-[Ex: localhost](http://localhost:8080/login)
+Ex: http://localhost:8080/login
