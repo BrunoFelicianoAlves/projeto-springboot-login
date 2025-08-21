@@ -14,4 +14,4 @@ public class ProjetoSpringApplication {
 //https://github.com/BrunoFelicianoAlves/projeto-springboot-login
 
 //Última atualização
-//https://github.com/BrunoFelicianoAlves/projeto-springboot-login/commit/600c97f09ff4ed5571d1a3006085c2ed86cc318d
+//https://github.com/BrunoFelicianoAlves/projeto-springboot-login/commit/6b4213063f7e75945390dbf15f4be56c654ae9b1
